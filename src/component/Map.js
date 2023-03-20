@@ -44,18 +44,17 @@ const Map = (props) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url={YOUR_MAP_API_KEY}
         />
-        {userPlace.loaded && !userPlace.error && (
-          <Marker
-            position={[userPlace.coordinates.lat, userPlace.coordinates.lng]}
-            icon={icon}
-          >
+     {
+        location ? (
+         <Marker position={locationSelection} icon={icon}>
           </Marker>
-        )}
-
-        {location && (
-          <Marker position={locationSelection} icon={icon}>
-          </Marker>
-        )}
+        ) : 
+        <Marker
+        position={[userPlace.coordinates.lat, userPlace.coordinates.lng]}
+        icon={icon}
+      >
+      </Marker>
+    }
         <ResetCenterViwe location={location} />
       </MapContainer>
     </>
